@@ -368,11 +368,8 @@ def select_advance_targeting_type_array_ids(segment_type, input_value, targeting
 
         if input_value.has_key("and"):
             for id_and in input_value["and"]:
-                ## TODO: make the behavior AND query request less hacky
                 if(segment_type == constants.INPUT_BEHAVIOR_FIELD):
-                    if(len(targeting['flexible_spec']) == 1):
-                        targeting['flexible_spec'].append({api_field_name : []})
-                    targeting['flexible_spec'][1][api_field_name].append({"id" : id_and})
+                    targeting['flexible_spec'].append({api_field_name: {"id" : id_and}})
                 else:
                     targeting["flexible_spec"].append({segment_type: {"id" : id_and}})
 
