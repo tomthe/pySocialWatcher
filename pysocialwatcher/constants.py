@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import time
-REACHESTIMATE_URL = "https://graph.facebook.com/v3.1/act_{}/delivery_estimate"
-GRAPH_SEARCH_URL = "https://graph.facebook.com/v3.1/search"
-TARGETING_SEARCH_URL = "https://graph.facebook.com/v3.1/act_{}/targetingsearch"
+REACHESTIMATE_URL = "https://graph.facebook.com/v7.0/act_{}/delivery_estimate"
+GRAPH_SEARCH_URL = "https://graph.facebook.com/v7.0/search"
+TARGETING_SEARCH_URL = "https://graph.facebook.com/v7.0/act_{}/targetingsearch"
 SAVE_EMPTY = True
 SLEEP_TIME = 8
 SAVE_EVERY = 300
@@ -22,7 +22,7 @@ DATAFRAME_SKELETON_FILE_NAME = "dataframe_skeleton_" + UNIQUE_TIME_ID + ".csv"
 DATAFRAME_TEMPORARY_COLLECTION_FILE_NAME = "dataframe_collecting_" + UNIQUE_TIME_ID + ".csv"
 DATAFRAME_AFTER_COLLECTION_FILE_NAME = "dataframe_collected_finished_" + UNIQUE_TIME_ID + ".csv"
 DATAFRAME_AFTER_COLLECTION_FILE_NAME_WITHOUT_FULL_RESPONSE = "collect_finished_clean" + UNIQUE_TIME_ID + ".csv"
-DEFAULT_DUMB_TARGETING = {'geo_locations': {u'regions': [{u'key': u'3843'}], 'location_types': ['home']}, 'genders': [0], }
+DEFAULT_DUMB_TARGETING = {'geo_locations': {'regions': [{'key': '3843'}], 'location_types': ['home']}, 'genders': [0], }
 TOKENS = []
 INPUT_AGE_RANGE_FIELD = "ages_ranges"
 INPUT_GEOLOCATION_FIELD = "geo_locations"
