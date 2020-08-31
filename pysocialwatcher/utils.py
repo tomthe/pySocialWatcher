@@ -506,4 +506,3 @@ def from_FB_polygons_to_KML(poly):
             out += " %s,%s" % (pair["lng"], pair["lat"])
         out += "</coordinates></LinearRing></outerBoundaryIs></Polygon>"
     return out
-
