@@ -7,6 +7,7 @@ import itertools
 import logging
 import coloredlogs
 import time
+import datetime
 from multiprocessing import Process, Manager
 import numpy
 import requests
@@ -59,6 +60,22 @@ def get_dataframe_from_json_response_query_data(json_response):
         dataframe = dataframe.append(entry_details, ignore_index=True)
     return dataframe
 
+def check_time_of_day_and_sleep_if_specified():
+    timestamp_now = datetime.datetime.now().time() # Throw away the date information
+
+    #check if a time is between two other timea
+    if (constants.PAUSE_EVERYDAY_START <= timestamp_now <= constants.PAUSE_EVERYDAY_END):
+        logging.info(f"checked for time - In specified time-window {constants.PAUSE_EVERYDAY_START} | {constants.PAUSE_EVERYDAY_END} ")
+        while True:
+            time.sleep(10)
+            if not (constants.PAUSE_EVERYDAY_START <= timestamp_now <= constants.PAUSE_EVERYDAY_END):
+                logging.info("time window is over. resume collection!")
+                return 0
+                break
+    else:
+        return 0
+
+
 
 def handle_send_request_error(response, url, params, tryNumber):
     try:
@@ -70,15 +87,15 @@ def handle_send_request_error(response, url, params, tryNumber):
             return send_request(url, params, tryNumber)
         elif error_json["error"]["code"] == constants.API_TOO_MANY_REQUESTS:
             print_error_warning(error_json, params)
-            print("too many requests. wait for ") # 3600sec - 8*60
-            if tryNumber==0:
+            if tryNumber==1: # starts with 1
                 sleeptime = 3600- (8*60)
-            if tryNumber==1:
-                sleeptime = 8*60 + 60
+            if tryNumber==2:
+                sleeptime = 10*60
             else:
                 sleeptime = - 3600 + 3600*tryNumber
-            logging.info(f"Too many API-requests, waiting for{sleeptime} seconds...")
+            logging.info(f"Too many API-requests, waiting for {sleeptime} seconds...")
             time.sleep(sleeptime)
+            check_time_of_day_and_sleep_if_specified()
             return send_request(url, params, tryNumber)
         elif error_json["error"]["code"] == constants.INVALID_PARAMETER_ERROR and "error_subcode" in error_json[
             "error"] and error_json["error"]["error_subcode"] == constants.FEW_USERS_IN_CUSTOM_LOCATIONS_SUBCODE_ERROR:

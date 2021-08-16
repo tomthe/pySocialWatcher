@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
+import datetime
 
 UNIQUE_TIME_ID = str(time.time()).split(".")[0]
 DATAFRAME_SKELETON_FILE_NAME = "dataframe_skeleton_" + UNIQUE_TIME_ID + ".csv"
@@ -13,6 +14,10 @@ TARGETING_SEARCH_URL = "https://graph.facebook.com/v10.0/act_{}/targetingsearch"
 SAVE_EMPTY = True
 SLEEP_TIME = 0.33
 SAVE_EVERY = 200
+
+
+PAUSE_EVERYDAY_START = datetime.time(10, 30)
+PAUSE_EVERYDAY_END = datetime.time(11, 40)
 
 MAX_NUMBER_TRY = 10
 REQUESTS_TIMEOUT = 60
