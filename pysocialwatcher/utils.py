@@ -68,6 +68,18 @@ def handle_send_request_error(response, url, params, tryNumber):
             print_error_warning(error_json, params)
             time.sleep(constants.INITIAL_TRY_SLEEP_TIME * tryNumber)
             return send_request(url, params, tryNumber)
+        elif error_json["error"]["code"] == constants.API_TOO_MANY_REQUESTS:
+            print_error_warning(error_json, params)
+            print("too many requests. wait for ") # 3600sec - 8*60
+            if tryNumber==0:
+                sleeptime = 3600- (8*60)
+            if tryNumber==1:
+                sleeptime = 8*60 + 60
+            else:
+                sleeptime = - 3600 + 3600*tryNumber
+            logging.info(f"Too many API-requests, waiting for{sleeptime} seconds...")
+            time.sleep(sleeptime)
+            return send_request(url, params, tryNumber)
         elif error_json["error"]["code"] == constants.INVALID_PARAMETER_ERROR and "error_subcode" in error_json[
             "error"] and error_json["error"]["error_subcode"] == constants.FEW_USERS_IN_CUSTOM_LOCATIONS_SUBCODE_ERROR:
             return get_fake_response()
@@ -482,7 +494,7 @@ def print_collecting_progress(uncomplete_df, df):
     full_size = len(df)
     uncomplete_df_size = len(uncomplete_df)
     print_info(
-        "Collecting... Completed: {:.2f}% , {:d}/{:d}".format((float(full_size - uncomplete_df_size) / full_size * 100),
+        "Collecting.vt.. Completed: {:.2f}% , {:d}/{:d}".format((float(full_size - uncomplete_df_size) / full_size * 100),
                                                               full_size - uncomplete_df_size, full_size))
 
 

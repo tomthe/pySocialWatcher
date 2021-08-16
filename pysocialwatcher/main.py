@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 
 class PySocialWatcher:
 
-    def __init__(self, api_version="8.0", sleep_time=8, save_every_x=300, outputname=None):
+    def __init__(self, api_version="10.0", sleep_time=8, save_every_x=300, outputname=None):
 
         constants.REACHESTIMATE_URL = "https://graph.facebook.com/v" + api_version + "/act_{}/delivery_estimate"
         constants.GRAPH_SEARCH_URL = "https://graph.facebook.com/v" + api_version + "/search"
@@ -354,4 +354,4 @@ class PySocialWatcher:
 
     @staticmethod
     def print_bad_joke():
-        print("I used to think the brain was the most important organ.\nThen I thought, look what’s telling me that.")
+        print("I used to think the brain was the most important organ.\nThen I thought, look what’s telling me that. Toms version a4")

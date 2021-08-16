@@ -1,11 +1,26 @@
 # -*- coding: utf-8 -*-
 import time
+
+UNIQUE_TIME_ID = str(time.time()).split(".")[0]
+DATAFRAME_SKELETON_FILE_NAME = "dataframe_skeleton_" + UNIQUE_TIME_ID + ".csv"
+DATAFRAME_TEMPORARY_COLLECTION_FILE_NAME = "dataframe_collecting_" + UNIQUE_TIME_ID + ".csv"
+DATAFRAME_AFTER_COLLECTION_FILE_NAME = "dataframe_collected_finished_" + UNIQUE_TIME_ID + ".csv"
+DATAFRAME_AFTER_COLLECTION_FILE_NAME_WITHOUT_FULL_RESPONSE = "collect_finished_clean" + UNIQUE_TIME_ID + ".csv"
+
+REACHESTIMATE_URL = "https://graph.facebook.com/v10.0/act_{}/delivery_estimate"
+GRAPH_SEARCH_URL = "https://graph.facebook.com/v10.0/search"
+TARGETING_SEARCH_URL = "https://graph.facebook.com/v10.0/act_{}/targetingsearch"
 SAVE_EMPTY = True
+SLEEP_TIME = 0.33
+SAVE_EVERY = 200
+
 MAX_NUMBER_TRY = 10
 REQUESTS_TIMEOUT = 60
 INITIAL_TRY_SLEEP_TIME = 300
+SLEEP_TIME_API_LIMIT_REACHED = 3600
 API_UNKOWN_ERROR_CODE_1 = 1
 API_UNKOWN_ERROR_CODE_2 = 2
+API_TOO_MANY_REQUESTS = 80004
 INVALID_PARAMETER_ERROR = 100
 ZIPCODE_INVALID_SUBCODE_ERROR = None
 FEW_USERS_IN_CUSTOM_LOCATIONS_SUBCODE_ERROR = 1885036
