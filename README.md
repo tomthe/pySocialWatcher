@@ -1,11 +1,26 @@
 # MPIDR fork of pySocialWatcher
 
-This is a fork of Joao Palottis fork of Matheus Araujos pySocialWatcher. Python 3 support by Joao (?). Support for
+This is a fork of Joao Palottis fork of Matheus Araujos pySocialWatcher. Python 3 support by Joao (?). Added support for
  * better handling of new API restrictions
  * pause everyday at specific times to let other collections run with the same tokens
+
 by Tom
 
 
+
+### Install
+    git clone https://github.com/tomthe/pySocialWatcher.git
+    cd pySocialWatcher
+    pip install -r requirements.txt
+    python setup.py install
+    
+### Quick Start
+look at the scripts in https://github.com/tomthe/pySocialWatcher_collections on how we use it.
+
+
+
+
+Here follows the old readme:
 
 # pySocialWatcher
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
@@ -68,7 +83,7 @@ Ad Targeting Search API: https://developers.facebook.com/docs/marketing-api/targ
     ```
 
 ### Install
-    git clone https://github.com/maraujo/pySocialWatcher.git
+    git clone https://github.com/tomthe/pySocialWatcher.git
     cd pySocialWatcher
     pip install -r requirements.txt
     python setup.py install
