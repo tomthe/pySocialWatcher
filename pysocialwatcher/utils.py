@@ -89,14 +89,18 @@ def handle_send_request_error(response, url, params, tryNumber):
             print_error_warning(error_json, params)
             if tryNumber==1: # starts with 1
                 sleeptime = 3600- (8*60)
-            if tryNumber==2:
+            elif tryNumber==2:
                 sleeptime = 10*60
             else:
                 sleeptime = - 3600 + 3600*tryNumber
-            logging.info(f"Too many API-requests, waiting for {sleeptime} seconds...")
+            logging.info(f"Too many API-requests, tryNumber {tryNumber}, waiting for {sleeptime} seconds...")
             time.sleep(sleeptime)
             check_time_of_day_and_sleep_if_specified()
             return send_request(url, params, tryNumber)
+        elif error_json["error"]["code"] == constants.API_ERROR_CODE_CATEGORY_UNAVAILABLE:
+            print_error_warning(error_json, params)
+            logging.info(f"Category unavailable, skipping this ...")
+            return get_fake_response()
         elif error_json["error"]["code"] == constants.INVALID_PARAMETER_ERROR and "error_subcode" in error_json[
             "error"] and error_json["error"]["error_subcode"] == constants.FEW_USERS_IN_CUSTOM_LOCATIONS_SUBCODE_ERROR:
             return get_fake_response()
