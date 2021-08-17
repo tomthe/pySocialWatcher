@@ -1,3 +1,12 @@
+# MPIDR fork of pySocialWatcher
+
+This is a fork of Joao Palottis fork of Matheus Araujos pySocialWatcher. Python 3 support by Joao (?). Support for
+ * better handling of new API restrictions
+ * pause everyday at specific times to let other collections run with the same tokens
+by Tom
+
+
+
 # pySocialWatcher
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 ### A Social Data Collector from Facebook Marketing API
