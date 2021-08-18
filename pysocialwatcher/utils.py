@@ -68,6 +68,7 @@ def check_time_of_day_and_sleep_if_specified():
         logging.info(f"checked for time - In specified time-window {constants.PAUSE_EVERYDAY_START} | {constants.PAUSE_EVERYDAY_END} ")
         while True:
             time.sleep(10)
+            timestamp_now = datetime.datetime.now().time()
             if not (constants.PAUSE_EVERYDAY_START <= timestamp_now <= constants.PAUSE_EVERYDAY_END):
                 logging.info("time window is over. resume collection!")
                 return 0
