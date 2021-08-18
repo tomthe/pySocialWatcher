@@ -15,7 +15,7 @@ by Tom
     python setup.py install
     
 ### Quick Start
-look at the scripts in https://github.com/tomthe/pySocialWatcher_collections on how we use it.
+look at the scripts in https://github.com/tomthe/facebook_collection_code on how we use it.
 
 
 
