@@ -355,4 +355,4 @@ class PySocialWatcher:
     @staticmethod
     def print_bad_joke():
         print("""I used to think the brain was the most important organ.\n
-        Then I thought, look what’s telling me that. Toms version a9""")
+        Then I thought, look what’s telling me that. Toms version b0""")

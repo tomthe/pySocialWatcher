@@ -8,9 +8,9 @@ DATAFRAME_TEMPORARY_COLLECTION_FILE_NAME = "dataframe_collecting_" + UNIQUE_TIME
 DATAFRAME_AFTER_COLLECTION_FILE_NAME = "dataframe_collected_finished_" + UNIQUE_TIME_ID + ".csv"
 DATAFRAME_AFTER_COLLECTION_FILE_NAME_WITHOUT_FULL_RESPONSE = "collect_finished_clean" + UNIQUE_TIME_ID + ".csv"
 
-REACHESTIMATE_URL = "https://graph.facebook.com/v10.0/act_{}/delivery_estimate"
-GRAPH_SEARCH_URL = "https://graph.facebook.com/v10.0/search"
-TARGETING_SEARCH_URL = "https://graph.facebook.com/v10.0/act_{}/targetingsearch"
+REACHESTIMATE_URL = "https://graph.facebook.com/v11.0/act_{}/delivery_estimate"
+GRAPH_SEARCH_URL = "https://graph.facebook.com/v11.0/search"
+TARGETING_SEARCH_URL = "https://graph.facebook.com/v11.0/act_{}/targetingsearch"
 SAVE_EMPTY = True
 SLEEP_TIME = 0.33
 SAVE_EVERY = 200
